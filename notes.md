@@ -106,8 +106,14 @@ https://guide.fission.codes/developers/webnative/auth#authentication
 
 -----------------------------------------------
 
-So, how to save a photo?
 
-* step one -- just save a blog post
-
+* [ ] step one -- just save a blog post
+* [ ] how do you get the right `feed`? see /src/pages/Editor.tsx
+  - could stringify the whole feed and get by CID?
+  - see /src/pages/Posts.tsx
+  ```js
+      const feedPath = fs.appPath(wn.path.file("feed.json"));
+      if (await fs.exists(feedPath)) {
+  ```
+* [ ] need to display existing posts on the 'home' view
 

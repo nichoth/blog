@@ -8,6 +8,9 @@ import { Feed } from "../utils/feed";
 
 const Posts = () => {
   const { fs, username } = useWebnative();
+
+  // TODO -- this state of the feed should be higher in the tree
+  // b/c the feed is also used by the Editor page
   const [feed, setFeed] = useState<Feed | null>();
 
   // Load or initialize feed
@@ -19,6 +22,7 @@ const Posts = () => {
       if (await fs.exists(feedPath)) {
         console.log("✅ feed file exists");
         const content = await fs.read(feedPath as FilePath);
+        console.log('feed content', content)
         setFeed(Feed.fromString(content as string));
       } else {
         console.log("❌ need to create feed");
