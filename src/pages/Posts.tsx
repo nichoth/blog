@@ -6,34 +6,37 @@ import * as wn from "webnative";
 import { FilePath } from "webnative/path";
 import { Feed } from "../utils/feed";
 
-const Posts = () => {
+const Posts = ({ feed }) => {
   const { fs, username } = useWebnative();
 
   // TODO -- this state of the feed should be higher in the tree
   // b/c the feed is also used by the Editor page
-  const [feed, setFeed] = useState<Feed | null>();
+  // const [feed, setFeed] = useState<Feed | null>();
 
   // Load or initialize feed
-  useEffect(() => {
-    async function loadFeed() {
-      if (!username || !fs || !fs.appPath) return;
+  // useEffect(() => {
+  //   async function loadFeed() {
+  //     if (!username || !fs || !fs.appPath) return;
 
-      const feedPath = fs.appPath(wn.path.file("feed.json"));
-      if (await fs.exists(feedPath)) {
-        console.log("✅ feed file exists");
-        const content = await fs.read(feedPath as FilePath);
-        console.log('got feed content', content)
-        setFeed(Feed.fromString(content as string));
-      } else {
-        console.log("❌ need to create feed");
-        const newFeed = new Feed(`${username}'s blog`);
-        await fs.write(feedPath as FilePath, newFeed.toString());
-        await fs.publish();
-      }
-    }
+  //     const feedPath = fs.appPath(wn.path.file("feed.json"));
+  //     if (await fs.exists(feedPath)) {
+  //       console.log("✅ feed file exists");
+  //       const content = await fs.read(feedPath as FilePath);
+  //       console.log('got feed content', content)
+  //       setFeed(Feed.fromString(content as string));
+  //     } else {
+  //       console.log("❌ need to create feed");
+  //       const newFeed = new Feed(`${username}'s blog`);
+  //       await fs.write(feedPath as FilePath, newFeed.toString());
+  //       await fs.publish();
+  //     }
+  //   }
 
-    loadFeed();
-  }, [fs, username]);
+  //   loadFeed();
+  // }, [fs, username]);
+
+
+  console.log('feeeeeeeeeeeeeeed', feed)
 
   return (
     <Layout>

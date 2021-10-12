@@ -43,7 +43,7 @@ function App() {
     <Router>
       <Switch>
         <Redirect from="/" to="/posts" exact />
-        <AuthRoute path="/posts" component={Posts} exact />
+        <AuthRoute path="/posts" component={Posts} exact feed={feed} />
         <AuthRoute path="/posts/new" component={Editor} exact />
         <Route path="/login" component={Login} />
       </Switch>
