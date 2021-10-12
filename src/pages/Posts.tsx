@@ -1,13 +1,13 @@
-import React, { useEffect, useState } from "react";
+import React/*, { useEffect, useState }*/ from "react";
 import { Link } from "react-router-dom";
 import Layout from "../components/Layout";
-import { useWebnative } from "../context/webnative";
-import * as wn from "webnative";
-import { FilePath } from "webnative/path";
-import { Feed } from "../utils/feed";
+// import { useWebnative } from "../context/webnative";
+// import * as wn from "webnative";
+// import { FilePath } from "webnative/path";
+// import { Feed } from "../utils/feed";
 
 const Posts = ({ feed }) => {
-  const { fs, username } = useWebnative();
+  // const { fs, username } = useWebnative();
 
   // TODO -- this state of the feed should be higher in the tree
   // b/c the feed is also used by the Editor page
