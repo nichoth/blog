@@ -22,7 +22,7 @@ const Posts = () => {
       if (await fs.exists(feedPath)) {
         console.log("✅ feed file exists");
         const content = await fs.read(feedPath as FilePath);
-        console.log('feed content', content)
+        console.log('got feed content', content)
         setFeed(Feed.fromString(content as string));
       } else {
         console.log("❌ need to create feed");
