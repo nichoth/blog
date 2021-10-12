@@ -15,7 +15,9 @@ const Editor = () => {
     formState: { errors },
   } = useForm<Inputs>();
 
-  const onSubmit = handleSubmit((data) => console.log(data));
+  const onSubmit = handleSubmit((data) => {
+    console.log('submit', data)
+  });
 
   return (
     <Layout>
