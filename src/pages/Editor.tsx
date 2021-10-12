@@ -1,7 +1,6 @@
 import React from "react";
 import { useForm } from "react-hook-form";
 import Layout from "../components/Layout";
-import { Feed } from "../utils/feed";
 import { useWebnative } from "../context/webnative";
 
 type Inputs = {
@@ -9,7 +8,7 @@ type Inputs = {
   content: string;
 };
 
-const Editor = () => {
+const Editor = ({ feed }) => {
   const {
     register,
     handleSubmit,
@@ -18,10 +17,8 @@ const Editor = () => {
 
   const { fs } = useWebnative()
 
-  // TODO -- how to get the right feed?
-  const feed = new Feed('example feed')
-
   console.log('fs', fs)
+  console.log('feed in editor', feed)
 
   const onSubmit = handleSubmit((data) => {
     console.log('submit', data)
