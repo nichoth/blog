@@ -54,4 +54,23 @@ Where does it store the actual files? I assume `webnative` has some kind of
 synchronization built in, so you could have a local copy + multiple remotes,
 like git.
 
+https://guide.fission.codes/developers/webnative/file-system-wnfs
+> The Web Native File System (WNFS) is a file system built on top of the InterPlanetary File System (IPFS)
+
+So it stores files in ipfs.
+
+https://guide.fission.codes/developers/webnative/file-system-wnfs#publish
+> The publish function synchronizes your file system with the Fission API and IPFS. WNFS does not publish changes automatically because it is more practical to batch changes in some cases.
+
+* where do you define the ipfs 'remote'? 
+
+-----------------------------------------------------------
+
+### How does authentication work? How does it know who I am?
+
+https://guide.fission.codes/developers/webnative/auth#authentication
+
+> Users authenticate once per browser in the Fission Auth Lobby. If the user is new to Fission, they are prompted to sign up. They may also link an existing account from another browser.
+
+> Webnative stores user credentials in the browser, and authentication through a third-party is not necessary. Private credentials are stored as WebCrypto CryptoKeys
 
