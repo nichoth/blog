@@ -64,6 +64,35 @@ https://guide.fission.codes/developers/webnative/file-system-wnfs#publish
 
 * where do you define the ipfs 'remote'? 
 
+> we run IPFS in the browser
+
+So there is a local copy of the data, stored in-browser
+
+> js-ipfs in browser by default only connects to other browser nodes, which aren’t connected to the “main” public IPFS network
+
+> We run a secure websocket in order to connect it to Fission hosted IPFS nodes that are connected to the main network
+> This is configurable — and anyone can run their own IPFS node / WSS to point at
+
+Configure your ipfs remote -- [set](https://github.com/fission-suite/webnative/blob/16c7edfbe34377ee6ec8ea378512c7f43102094f/src/ipfs/config.ts#L9)
+
+> You'd need to run your own [js-ipfs](https://www.npmjs.com/package/ipfs) instance and then connect to your remote node.
+> We use https://www.npmjs.com/package/ipfs-message-port-client as a js-ipfs proxy and then use js-ipfs in a SharedWorker through an iframe.
+
+
+-----------------------------------------
+
+
+> you'd create a js-ipfs instance/client and pass that to webnative.
+Then using js-ipfs you can connect to the other ipfs nodes.
+
+> you would pass the js-ipfs instance/client to webnative via the [set](https://github.com/fission-suite/webnative/blob/16c7edfbe34377ee6ec8ea378512c7f43102094f/src/ipfs/config.ts#L9) function 
+
+> `userIpfs`, the parameter in the function above, is the js-ipfs
+> instance/client
+
+So make calls to the js-ipfs client to configure how it connects to peer nodes
+
+
 -----------------------------------------------------------
 
 ### How does authentication work? How does it know who I am?
@@ -73,4 +102,12 @@ https://guide.fission.codes/developers/webnative/auth#authentication
 > Users authenticate once per browser in the Fission Auth Lobby. If the user is new to Fission, they are prompted to sign up. They may also link an existing account from another browser.
 
 > Webnative stores user credentials in the browser, and authentication through a third-party is not necessary. Private credentials are stored as WebCrypto CryptoKeys
+
+
+-----------------------------------------------
+
+So, how to save a photo?
+
+* step one -- just save a blog post
+
 

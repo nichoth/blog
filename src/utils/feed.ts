@@ -5,6 +5,8 @@
  */
 interface Item {
   id: string;
+  authors: Author[];
+  tags: string[];
   url?: string;
   external_url?: string;
   title?: string;
@@ -15,8 +17,6 @@ interface Item {
   banner_image?: string;
   date_published?: string;
   date_modified?: string;
-  authors: Author[];
-  tags: string[];
   language?: string;
 }
 
