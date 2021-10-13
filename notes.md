@@ -139,3 +139,11 @@ https://guide.fission.codes/developers/webnative/auth#authentication
   ```
 * [ ] need to display existing posts on the 'home' view
 
+
+-----------------------------------------------
+
+## 10-13-2021
+
+How do you add a blog post? Do you need to stringify it first?
+
+

@@ -2,10 +2,13 @@ import React from "react";
 import { useForm } from "react-hook-form";
 import Layout from "../components/Layout";
 import { useWebnative } from "../context/webnative";
+import * as wn from "webnative";
+import { FilePath } from "webnative/path";
 
 type Inputs = {
   title: string;
   content: string;
+  image: string;
 };
 
 const Editor = ({ feed }) => {
@@ -15,20 +18,32 @@ const Editor = ({ feed }) => {
     formState: { errors },
   } = useForm<Inputs>();
 
-  const { fs } = useWebnative()
+  const _wn = useWebnative()
+  const { fs } = _wn
 
-  console.log('fs', fs)
-  console.log('feed in editor', feed)
+  console.log('*wn*', _wn)
+  console.log('*fs*', fs)
+  console.log('**feed in editor**', feed)
 
-  const onSubmit = handleSubmit((data) => {
-    console.log('submit', data)
+  const onSubmit = handleSubmit(async (data) => {
+    console.log('**submit', data)
+
+    if (!fs || !fs.appPath) return
+
     feed.addItem({
+      // TODO -- how to get id?
       id: '1',
-      authors: [{ name: 'alice'}],
+      authors: [{ name: 'alice' }],
       content_text: data.content,
       title: data.title,
       tags: ['b']
     })
+
+    const feedPath = fs.appPath(wn.path.file("feed.json"));
+    console.log('feed path', feedPath)
+    // write the feed as a string
+    fs.write(feedPath as FilePath, feed.toString())
+    // TODO -- need to publish
   });
 
   return (
@@ -46,12 +61,21 @@ const Editor = ({ feed }) => {
               {...register("title", { required: true })}
             />
           </label>
+
+          <label>
+            Image
+            <input type="file"
+              className="form-input"
+              {...register('image')}
+            />
+          </label>
+
           <label className="block mt-6">
             Body
             <textarea
               rows={20}
               className="form-textarea"
-              {...register("content")}
+              {...register("content", { required: true })}
             ></textarea>
           </label>
           <div>
