@@ -16,7 +16,6 @@ const AuthRoute = ({ component: Component, ...rest }: Props) => {
     <Route
       {...rest}
       render={(props) => {
-        console.log('props', props)
         return state?.authenticated ? (
           <Component {...props} {...rest} />
         ) : (
