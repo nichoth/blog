@@ -45,7 +45,7 @@ const Editor = ({ feed }) => {
     // TODO -- how to persist between page refresh?
 
     // TODO -- should show resolving status while we publish
-    // fs.publish()
+    fs.publish()
   });
 
   return (
