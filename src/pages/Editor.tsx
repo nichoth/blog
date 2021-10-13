@@ -40,8 +40,6 @@ const Editor = ({ feed }) => {
     })
 
     const feedPath = fs.appPath(wn.path.file("feed.json"));
-    console.log('feed path', feedPath)
-    // write the feed as a string
     fs.write(feedPath as FilePath, feed.toString())
     // TODO -- need to publish
   });
