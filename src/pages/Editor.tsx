@@ -41,11 +41,11 @@ const Editor = ({ feed }) => {
 
     const feedPath = fs.appPath(wn.path.file("feed.json"));
     fs.write(feedPath as FilePath, feed.toString())
+      .then(() => fs.publish())
 
     // TODO -- how to persist between page refresh?
 
     // TODO -- should show resolving status while we publish
-    fs.publish()
   });
 
   return (
