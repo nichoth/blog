@@ -56,7 +56,6 @@ export class Feed {
 
   static fromString = (str: string): Feed => {
     if (!str) {
-      console.log('not str')
       return new Feed('test', [])
     }
     const feed = JSON.parse(str);
