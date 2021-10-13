@@ -41,8 +41,9 @@ export class Feed {
   expired?: boolean;
   items: Item[] = [];
 
-  constructor(title: string) {
+  constructor(title: string, items: Item[]) {
     this.title = title;
+    this.items = items;
   }
 
   public addItem = (item: Item) => {
@@ -54,7 +55,11 @@ export class Feed {
   };
 
   static fromString = (str: string): Feed => {
+    if (!str) {
+      console.log('not str')
+      return new Feed('test', [])
+    }
     const feed = JSON.parse(str);
-    return new Feed(feed);
+    return new Feed(feed.title, feed.items);
   };
 }

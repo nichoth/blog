@@ -43,8 +43,6 @@ const Editor = ({ feed }) => {
     fs.write(feedPath as FilePath, feed.toString())
       // TODO -- should show resolving status while we publish
       .then(() => fs.publish())
-
-    // TODO -- how to persist between page refresh?
   });
 
   return (

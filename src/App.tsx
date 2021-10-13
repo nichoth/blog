@@ -26,11 +26,10 @@ function App() {
       if (await fs.exists(feedPath)) {
         console.log("✅ feed file exists");
         const content = await fs.read(feedPath as FilePath);
-        console.log('got feed content', content)
-        setFeed(Feed.fromString(content as string));
+        setFeed(Feed.fromString(content as string || ''));
       } else {
         console.log("❌ need to create feed");
-        const newFeed = new Feed(`${username}'s blog`);
+        const newFeed = new Feed(`${username}'s blog`, []);
         await fs.write(feedPath as FilePath, newFeed.toString());
         await fs.publish();
       }
