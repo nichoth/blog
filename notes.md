@@ -10,8 +10,28 @@ somewhere.
 
 -----------------------------------------
 
-The `Posts.tsx` file logs `console.log("✅ feed file exists")` when I start the
-app. What is the feed file and where is it?
+Status -- working on 'publishing' blog posts -- just text, not images.
+
+Need to call `fs.write` and/or `fs.publish`
+
+Have moved the 'feed' object higher in the state tree -- https://github.com/nichoth/blog/blob/photo/src/App.tsx#L30 . That way it can be shared by multiple views. It is used by `Posts` and `Editor` so far.
+
+An interesting thing is that the app will run alright, meaning `npm start` works. But in vscode typescript tells me there is an error in `/src/App.tsx`. 
+
+```
+Type '({ feed }: { feed: any; }) => Element' is not assignable to type 'FC<RouteComponentProps<{}, StaticContext, unknown>>'.
+  Types of parameters '__0' and 'props' are incompatible.
+    Property 'feed' is missing in type 'RouteComponentProps<{}, StaticContext, unknown> & { children?: ReactNode; }' but required in type '{ feed: any; }'.ts(2322)
+AuthRoute.tsx(7, 3): The expected type comes from property 'component' which is declared here on type 'IntrinsicAttributes & Props'
+```
+
+In the given function, [set](https://github.com/fission-suite/webnative/blob/16c7edfbe34377ee6ec8ea378512c7f43102094f/src/ipfs/config.ts#L9), it takes an arg `userIpfs`. This arg is a js-ipfs instance. You would call the js-ipfs API to configure how it connects to other ipfs nodes.
+
+
+-----------------------------------------
+
+
+The `Posts.tsx` file logs `console.log("✅ feed file exists")` when I start the app. What is the feed file and where is it?
 
 The `fs` here is the webnative module.
 ```js
@@ -53,6 +73,8 @@ From what I've read so far...
 Where does it store the actual files? I assume `webnative` has some kind of
 synchronization built in, so you could have a local copy + multiple remotes,
 like git.
+
+**we're using ipfs**
 
 https://guide.fission.codes/developers/webnative/file-system-wnfs
 > The Web Native File System (WNFS) is a file system built on top of the InterPlanetary File System (IPFS)
