@@ -147,3 +147,11 @@ https://guide.fission.codes/developers/webnative/auth#authentication
 How do you add a blog post? Do you need to stringify it first?
 
 
+--------------------------------------------------
+
+## 10-15-2021
+Everything looks good as far as tests & style of the main part, now to start 
+on images.
+
+Frist question -- what format should an image be in? We are saving this to
+ipfs I think (a local ipfs server).
