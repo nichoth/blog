@@ -155,3 +155,6 @@ on images.
 
 Frist question -- what format should an image be in? We are saving this to
 ipfs I think (a local ipfs server).
+
+__using jest + dom/snapshots__
+https://jestjs.io/docs/snapshot-testing#updating-snapshots
