@@ -158,3 +158,12 @@ ipfs I think (a local ipfs server).
 
 __using jest + dom/snapshots__
 https://jestjs.io/docs/snapshot-testing#updating-snapshots
+
+
+-----------------------------------------------------------------------
+
+## TODO
+
+* [ ] should use a hash as the filename for the image
+* [ ] `tsc` should work
+
